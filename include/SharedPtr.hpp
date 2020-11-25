@@ -71,6 +71,7 @@ SharedPtr<T>::~SharedPtr<T>() {
 
 template <typename T>
 auto SharedPtr<T>::operator=(const SharedPtr& r) -> SharedPtr& {
+  delete refs;
   if (ptr != nullptr) {
     delete ptr;
   }
@@ -121,6 +122,7 @@ template <typename T>
 void SharedPtr<T>::reset() {
   if (--(*refs) == 0) {
     delete ptr;
+    delete refs;
   }
   refs = nullptr;
   ptr = nullptr;
