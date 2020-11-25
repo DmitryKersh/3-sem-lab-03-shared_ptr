@@ -31,6 +31,10 @@ SharedPtr<T>::~SharedPtr<T>() {
 
 template <typename T>
 auto SharedPtr<T>::operator=(const SharedPtr& r) -> SharedPtr& {
+  if (ptr != nullptr){
+    delete ptr;
+  }
+  refs = r.refs;
   if (r != this) {
     (*refs)++;
     ptr = r.ptr;
@@ -41,6 +45,11 @@ auto SharedPtr<T>::operator=(const SharedPtr& r) -> SharedPtr& {
 template <typename T>
 auto SharedPtr<T>::operator=(SharedPtr&& r)  noexcept -> SharedPtr& {
   if (r != this) {
+    delete refs;
+    if (ptr != nullptr) {
+      delete ptr;
+    }
+    refs = r.refs;
     ptr = r.ptr;
     r.refs = nullptr;
     r.ptr = nullptr;
