@@ -1,11 +1,12 @@
 // Copyright 2020 Your Name <your_email>
 
-#ifndef INCLUDE_HEADER_HPP_
-#define INCLUDE_HEADER_HPP_
+#ifndef INCLUDE_SHAREDPTR_HPP_
+#define INCLUDE_SHAREDPTR_HPP_
 
 #include <atomic>
 #include <cstddef>
 #include <iostream>
+#include <utility>
 
 using std::atomic_uint;
 
@@ -146,4 +147,4 @@ SharedPtr<T>::operator bool() const {
   return ptr != nullptr;
 }
 
-#endif  // INCLUDE_HEADER_HPP_
+#endif  // INCLUDE_SHAREDPTR_HPP_
