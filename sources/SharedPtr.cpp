@@ -1,4 +1,4 @@
-#include "SharedPtr.hpp"
+#include <SharedPtr.hpp>
 
 template <typename T>
 SharedPtr<T>::SharedPtr(T* ptr_) : ptr(ptr_){
@@ -12,7 +12,7 @@ SharedPtr<T>::SharedPtr() : ptr(nullptr) {
 
 template <typename T>
 SharedPtr<T>::SharedPtr(const SharedPtr<T>& r) : ptr(r.ptr), refs(r.refs){
-  *refs++;
+  (*refs)++;
 }
 
 template <typename T>
